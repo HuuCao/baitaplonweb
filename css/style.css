@@ -810,7 +810,22 @@ ul, ol {
 
 /* /PRODUCT-ITEM */
 
+/* ABOUT */
+.about{
+  background-image: url('../img/about.jpg');
+  height: 100%;
+  width: 100%;
+}
+.about div.box{
+  background-color: #F6F7F8;
+  margin-top: 20px;
+  opacity: 0.8;
+}
+.about div.box p{
+  margin-top: 40px;
+}
 
+/* /ABOUT */
 
 /* ĐỊNH NGHĨA CHO btn */
 
@@ -866,6 +881,36 @@ ul, ol {
 
 /* /ĐỊNH NGHĨA CHO btn */
 
+/* TABLE CHECKOUT */
+th{
+  text-align: center;
+  background-color: #ededf5;
+  color: #000;
+  height: 50px;
+}
+
+td{
+  padding-top: 15px;
+  font-size: 16px;
+  text-align: center;
+  width: 500px;
+  height: 100%;
+  background-color: #f8f7f7;
+}
+.checkout{
+  height: 40px;
+  width: 300px;
+  border-radius: 0%;
+  background-color: #f16821;
+  border: none;
+  color: white;
+}
+.checkout:hover{
+  background-color: #000;
+  transition: 0.3s background;
+}
+
+/* /TABLE CHECKOUT */
 
 
 
@@ -1112,3 +1157,4 @@ footer.footer-container section.footer-container-section div.footer-div-containe
     width: 15vw;
   }
 }
+
