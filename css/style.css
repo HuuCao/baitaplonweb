@@ -377,7 +377,7 @@ ul, ol {
     border-left: 1px solid #DADADA;
     border-right: 1px solid #DADADA;
     border-bottom: 1px solid #DADADA;
-    z-index: 50;
+    z-index: 10;
     transition: 0.3s all;
 }
   
@@ -641,6 +641,7 @@ ul, ol {
 }
 
 .banner.banner-1 .banner-caption {
+  cursor: pointer;
   position: absolute;
   top: 50%;
   left: 50%;

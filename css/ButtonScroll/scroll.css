@@ -1,0 +1,92 @@
+html {
+  scroll-behavior: smooth;
+}
+
+a#scroll {
+  position: fixed;
+  right: 1.3vw;
+  bottom: 3vw;
+  width: 3.3vw;
+  height: 3.3vw;
+  background-color: #F8694A;
+  text-indent: -9999px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0.4;
+  border-radius: 100px;
+}
+
+a#scroll:hover {
+  opacity: 1;
+  opacity: 1;
+  filter: "alpha(opacity=100)";
+  -ms-filter: "alpha(opacity=100)";
+  overflow: hidden;
+}
+
+a#scroll:hover svg {
+  -webkit-animation: animationToSlide linear 0.7s infinite;
+          animation: animationToSlide linear 0.7s infinite;
+}
+
+a#scroll svg {
+  height: 2vw;
+  width: 2vw;
+}
+
+a#scroll svg path {
+  fill: black;
+}
+
+@-webkit-keyframes animationToSlide {
+  from {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes animationToSlide {
+  from {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@media only screen and (max-width: 739px) {
+  a#scroll {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  a#scroll:hover {
+    opacity: 1;
+    opacity: 1;
+    filter: "alpha(opacity=100)";
+    -ms-filter: "alpha(opacity=100)";
+    overflow: hidden;
+  }
+  a#scroll:hover svg {
+    -webkit-animation: none;
+            animation: none;
+  }
+  a#scroll svg {
+    height: 18px;
+    width: 18px;
+  }
+}
+/*# sourceMappingURL=scroll.css.map */
