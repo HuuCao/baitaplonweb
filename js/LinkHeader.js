@@ -1,6 +1,7 @@
 
-function getLinkHeader() {
 
+function getLinkHeader() {
+  
 var s = ` 
 
     <!--top-header-->
@@ -42,7 +43,7 @@ var s = `
             <div class="pull-left">
                 <!--logo-->
                 <div class="header-logo">
-                    <a class="logo" href="#">
+                    <a class="logo" href="./index.html">
                         <img src="./img/logo.png" alt="logo">
                     </a>
                 </div>
@@ -85,49 +86,20 @@ var s = `
                     <!--/Account-->
 
                     <!--Cart-->
-                    <li class="header-cart dropdown default-dropdown">
+                    <li class="header-cart dropdown default-dropdown" style="width: 126px;">
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                             <div class="header-btns-icon">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span class="qty">3</span>
+                                <span class="qty">${sessionStorage.length}</span>
                             </div>
                             <strong class="text-uppercase">My Cart:</strong>
                             <br>
-                            <span>$60000</span>
+                            <span id="totals">$60000</span>
                         </a>
                         <div class="custom-menu">
                             <div id="shopping-cart">
                                 <div class="shopping-cart-list">
-                                    <div class="product product-widget">
-                                        <div class="product-thumb">
-                                            <img src="./img/product_01.jpg" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h5 class="product-price">$10000 <span class="qty">x1</span></h5>
-                                            <h4 class="product-name"><a href="#">Iphone 11 Pro</a></h4>
-                                        </div>
-                                        <button class="cancel-btn"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <div class="product product-widget">
-                                        <div class="product-thumb">
-                                            <img src="./img/product_02.jpg" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h5 class="product-price">$30000 <span class="qty">x1</span></h5>
-                                            <h4 class="product-name"><a href="#">Macbook Pro</a></h4>
-                                        </div>
-                                        <button class="cancel-btn"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <div class="product product-widget">
-                                        <div class="product-thumb">
-                                            <img src="./img/product_03.jpg" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h5 class="product-price">$20000 <span class="qty">x1</span></h5>
-                                            <h4 class="product-name"><a href="#">Ipad Air</a></h4>
-                                        </div>
-                                        <button class="cancel-btn"><i class="fa fa-trash"></i></button>
-                                    </div>
+                                    
                                 </div>
                                 <div class="shopping-cart-btns">
                                     <button class="main-btn">View Cart</button>
@@ -264,4 +236,66 @@ var s = `
 
 
 getLinkHeader();
+
+
+
+function getViewCart() {
+    sessionStorage.removeItem("IsThisFirstTime_Log_From_LiveServer");
+    var lengthSessionStorage = sessionStorage.length;
+    var arrKey = [];
+
+    for (var i = 0; i < lengthSessionStorage; ++i) {
+        var value = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+        arrKey.push(value);
+    }
+
+    var divElement = document.querySelector(".shopping-cart-list");
+    var spanElement = document.querySelector("#totals");
+    var s = "";
+    var total = 0;
+    arrKey.forEach(function(element) {
+        s += `
+            <div class="product product-widget">
+                <div class="product-thumb">
+                    <img src="${element.img}" alt="" style="width: 80px; height: 80px;">
+                </div>
+                <div class="product-body">
+                    <h5 class="product-price">${formatPrice(element.price)} <span class="qty">x1</span></h5>
+                    <h4 class="product-name"><a href="#">${element.name}</a></h4>
+                </div>
+                <button class="cancel-btn" onClick="removeItemCart(${element.productId})"><i class="fa fa-trash"></i></button>
+            </div>
+        `
+        total += element.price;
+
+    })
+
+    divElement.innerHTML = s;
+    spanElement.innerHTML = formatPrice(total);
+}
+
+function formatPrice(num) {
+    return "$" + num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+}
+
+getViewCart();
+
+
+function removeItemCart(id) {
+    sessionStorage.removeItem("IsThisFirstTime_Log_From_LiveServer");
+
+    var lengthSessionStorage = sessionStorage.length;
+    var total = 0;
+    for(var i = 0 ; i < lengthSessionStorage; ++i) {
+        total +=JSON.parse(sessionStorage.getItem(sessionStorage.key(i))).price;
+        console.log(total)
+        if(id === JSON.parse(sessionStorage.getItem(sessionStorage.key(i))).productId) {
+            sessionStorage.removeItem(sessionStorage.key(i));
+            document.querySelector(".qty").innerHTML = lengthSessionStorage-1;
+            document.querySelector("#totals").innerHTML = formatPrice(total-JSON.parse(sessionStorage.getItem(sessionStorage.key(i))).price);
+            
+        }  
+    }
+
+}
 

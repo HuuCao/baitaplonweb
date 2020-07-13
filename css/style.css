@@ -1157,5 +1157,13 @@ footer.footer-container section.footer-container-section div.footer-div-containe
     height: 7vw;
     width: 15vw;
   }
+
+  div.row {
+    display: flex !important;
+    flex-direction: column !important;
+
+  }
+
 }
+
 

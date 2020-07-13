@@ -1,3 +1,6 @@
+
+
+
 var productArray = [
 
   
@@ -954,7 +957,7 @@ function showProductDetail(productId) {
   var styleDisplay = "" ;
   var length = productArray.length;
 
-  for(i = 0; i < length; ++i) {
+  for(var i = 0; i < length; ++i) {
     if(productId === productArray[i].productId) {
       s += `
           <div id="div-product">
@@ -983,12 +986,13 @@ function showProductDetail(productId) {
               </div>
 
               <div class="div-submit">
-                <button type="button" class="btn-submit">ADD TO CART</button>
+                <button type="button" class="btn-submit" onClick="addToCart(${productId})">ADD TO CART</button>
               </div>
             </div>;
           </div>
           `
       styleDisplay += "block";
+
     }
   }
 
@@ -1002,7 +1006,7 @@ function getData() {
   var s = "";
   var productsLength = productArray.length;
 
-  for(i = 0; i < productsLength; ++i) { 
+  for(var i = 0; i < productsLength; ++i) { 
     s += `
     <div class="col-lg-4 col-md-6 mb-5">
     <div class="product-item">
@@ -1026,10 +1030,21 @@ function getData() {
     `;
   }
   document.getElementById("products").innerHTML = s;
-  
 }
 
 getData();
+
+
+function addToCart(id) {
+  for(var index in productArray) {
+    if(id === productArray[index].productId) {
+      console.log(sessionStorage.length++);
+      sessionStorage.setItem(`${productArray[index].productId}`, JSON.stringify(productArray[index]));
+      document.querySelector("#background-container").style.display = 'none';
+    }
+  }
+}
+
 
 
 

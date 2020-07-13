@@ -47,65 +47,25 @@
             </div>
         </div>
         <div class="row">
-            <div style="padding-top: 40px;" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                <table>
+            <div style="padding-top: 40px;" class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="tableProduct">
+                <table id="itemProduct"  class="table">
                     <tr>
                         <th>Images</th>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Quantity</th>
                     </tr>
-                    <tr>
-                        <td><img src="./img/product01.jpg" alt=""></td>
-                        <td>Iphone 11</td>
-                        <td>$10000</td>
-                        <td class="table-list__body-column">
-                            <button class="btn-quantity" id="btn-quantity-down">-</button>
-                            <input type="text" min="0" class="input-quantity" value="1" name="" style="width: 40px; padding-left: 8px">
-                            <button class="btn-quantity" id="btn-quantity-up">+</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="./img/product03.jpg" alt=""></td>
-                        <td>Iphone 11</td>
-                        <td>$10000</td>
-                        <td class="table-list__body-column">
-                            <button class="btn-quantity" id="btn-quantity-down">-</button>
-                            <input type="text" min="0" class="input-quantity" value="1" name="" style="width: 40px; padding-left: 8px">
-                            <button class="btn-quantity" id="btn-quantity-up">+</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="./img/product02.jpg" alt=""></td>
-                        <td>Iphone 11</td>
-                        <td>$10000</td>
-                        <td class="table-list__body-column">
-                            <button class="btn-quantity" id="btn-quantity-down">-</button>
-                            <input type="text" min="0" class="input-quantity" value="1" name="" style="width: 40px; padding-left: 8px">
-                            <button class="btn-quantity" id="btn-quantity-up">+</button>
-                        </td>
-                    </tr>
-                     <tr>
-                        <td><img src="./img/product03.jpg" alt=""></td>
-                        <td>Iphone 11</td>
-                        <td>$10000</td>
-                        <td class="table-list__body-column">
-                            <button class="btn-quantity" id="btn-quantity-down">-</button>
-                            <input type="text" min="0" class="input-quantity" value="1" name="" style="width: 40px; padding-left: 8px">
-                            <button class="btn-quantity" id="btn-quantity-up">+</button>
-                        </td>
-                    </tr>
                 </table>
             </div>
 
-            <div style="padding-top: 40px;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <table>
+            <div style="padding-top: 40px;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="total">
+                <table id="totalProduct">
                     <tr>
                         <th style="font-size: 18px;" colspan="2">Cart Total</th>
                     </tr>
                     <tr>
                         <td>SubTotal:</td>
-                        <td>$60000</td>
+                        <td id="subtotal">$60000</td>
                     </tr>
                     <tr>
                         <td>Delivery:</td>
@@ -113,7 +73,7 @@
                     </tr>
                     <tr>
                         <td>Total:</td>
-                        <td>$60000</td>
+                        <td id="total">$60000</td>
                     </tr>
                     <tr>
                         <td colspan="2"><input class="checkout" type="submit" value="Checkout"></td>
@@ -152,21 +112,10 @@
 	<script src="./js/swiper.js"></script>
     <script src="./js/swiper.min.js"></script>
     
-    <!-- Tăng giảm số lượng quantity -->
-    <script>
-        var down = document.getElementById("btn-quantity-down");
-        var up = document.getElementById("btn-quantity-up");   
-        var valueInput = document.querySelector(".input-quantity");
-        down.addEventListener("click", function(){
-            if(valueInput.value != 0) {
-                valueInput.value -= 1;
-                console.log(valueInput.value);
-            }
-        })
-        up.addEventListener("click", function(){
-            valueInput.value++;
-            console.log(valueInput.value);
-        })
-    </script>
+
+    <script src="./js/reponsiveCarousel.js"></script>
+    <script src="./js/getDataSessionStorage.js"> </script>
+    <script src="./js/reponsiveCheckout.js"></script>
+
 	
 </body>
