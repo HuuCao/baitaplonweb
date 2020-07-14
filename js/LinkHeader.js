@@ -44,7 +44,7 @@ var s = `
                 <!--logo-->
                 <div class="header-logo">
                     <a class="logo" href="./index.html">
-                        <img src="./img/logo.png" alt="logo">
+                        <img src="./img/log_apple.png" alt="logo" style="width: 70px; height: 70px;">
                     </a>
                 </div>
                 <!--/logo-->
@@ -286,16 +286,19 @@ function removeItemCart(id) {
 
     var lengthSessionStorage = sessionStorage.length;
     var total = 0;
+
     for(var i = 0 ; i < lengthSessionStorage; ++i) {
-        total +=JSON.parse(sessionStorage.getItem(sessionStorage.key(i))).price;
-        console.log(total)
+        total += JSON.parse(sessionStorage.getItem(sessionStorage.key(i))).price;
+    }
+    console.log(total)
+
+    for(var i = 0 ; i < lengthSessionStorage; ++i) {
+        
         if(id === JSON.parse(sessionStorage.getItem(sessionStorage.key(i))).productId) {
-            sessionStorage.removeItem(sessionStorage.key(i));
             document.querySelector(".qty").innerHTML = lengthSessionStorage-1;
             document.querySelector("#totals").innerHTML = formatPrice(total-JSON.parse(sessionStorage.getItem(sessionStorage.key(i))).price);
-            
+            sessionStorage.removeItem(sessionStorage.key(i));
         }  
     }
-
 }
 
