@@ -40,13 +40,13 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<form>
+				<form id="form-login">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" placeholder="Họ tên">
+                        <input type="text" class="form-control" id="name" placeholder="Họ tên (chữ cái đầu tiên phải viết hoa)">
                         <span class="err">(*)</span>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="mk" placeholder="Mật khẩu">
+                        <input type="password" class="form-control" id="mk" placeholder="Mật khẩu (dài 6 kí tự gồm chữ và số)">
                         <span class="err">(*)</span>
                     </div>
                     <div class="form-group">
@@ -69,7 +69,7 @@
                         </label>
                       </div>
                     <div class="form-group">
-                        <input type="number" class="form-control" id="sdt" placeholder="Số điện thoại">
+                        <input type="text" class="form-control" id="sdt" placeholder="Số điện thoại">
                         <span class="err">(*)</span>
                     </div>
                     <div class="form-group">
@@ -85,6 +85,9 @@
 			</div>
 			
 		</div>
-	</div>
+    </div>
+    
+    <script src="./js/validateForm.js"></script>
+
 </body>
 </html>
